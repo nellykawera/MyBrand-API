@@ -1,0 +1,19 @@
+{
+    "swaggerDefinition": {
+        "info": {
+            "title": "My Brand API",
+            "version": "1.0.0",
+            "description": "My Brand API documentation",
+            "contact": {
+                "name": "Kawera Nelly"
+            },
+            "servers": [
+                "http://localhost:3001"
+            ]
+        }
+    },
+    "apis": [
+        "app.js",
+        "./routes/*.js"
+    ]
+}
