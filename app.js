@@ -50,5 +50,4 @@ mongoose.connect(process.env.MONGODB_URL, {
         console.error(error);
     });
 
-module.exports = app;
-
+    module.exports= app;

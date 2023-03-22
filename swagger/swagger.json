@@ -8,7 +8,8 @@
                 "name": "Kawera Nelly"
             },
             "servers": [
-                "http://localhost:3001"
+                "http://localhost:3001",
+                "https://mybrand-ful7.onrender.com/docs"
             ]
         }
     },

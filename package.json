@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "start": "nodemon app.js",
-    "test": " nyc --reporter=html --reporter=text mocha tests /**/*test.js --reporter spec"  },
+    "test": " nyc --reporter=html --reporter=text mocha tests/**/*test.js --reporter spec"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -16,13 +17,13 @@
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^7.0.1",
     "nodemon": "^2.0.21",
-    "nyc": "^15.1.0",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^4.6.2"
   },
   "devDependencies": {
     "chai": "^4.3.7",
     "chai-http": "^4.3.0",
-    "mocha": "^10.2.0"
+    "mocha": "^10.2.0",
+    "nyc": "^15.1.0"
   }
 }

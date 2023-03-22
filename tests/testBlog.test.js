@@ -1,21 +1,19 @@
-const chai =require ("chai");
-const chaiHttp =require ("chai-http");
-const { expect } =require ("chai");
-const app =require ("../../app");
-
-
+const chai = require("chai");
+const chaiHttp = require("chai-http");
+const app = require("../app");
+const expect = require("expect")
 chai.should();
 chai.use(chaiHttp);
 
 // create a blog
 describe("create a blog", () => {
     it("should create a new blog post with all fields filled", (done) => {
-        // const token =
-        //     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkQGdtYWlsLmNvbSIsImlkIjoiNjNlNTAwZDlmMDRlZmNhZDc5YmVhOGExIiwiaWF0IjoxNjc1OTUzNTg3fQ.ToOlZRN705jMHHV_b0zGYzC2V6_sd4TEeuGIw6FnkT0";
+        const token =
+            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkQGdtYWlsLmNvbSIsImlkIjoiNjNlNTAwZDlmMDRlZmNhZDc5YmVhOGExIiwiaWF0IjoxNjc1OTUzNTg3fQ.ToOlZRN705jMHHV_b0zGYzC2V6_sd4TEeuGIw6FnkT0";
         chai
             .request(app)
             .post("/api/blogs/")
-            // .set("auth_token", `${token}`)
+            .set("auth_token", `${token}`)
             .field("title", "Test Blog")
             .field("description", "this is a description of  Blog")
             //.attach("image", image, "1673610548664brand.PNG")
@@ -34,7 +32,7 @@ describe("Get all posts", () => {
     it("It Should get all Posts", (done) => {
         chai
             .request(app)
-            .get("/api/article/")
+            .get("/api/blogs/")
             .end((err, res) => {
                 if (err) return done(err);
                 // expect(res.status).to.equal(200);
@@ -52,7 +50,7 @@ describe("get single blog by id", () => {
         const id = "63ce55c3cff4e8d1db71ccb2";
         chai
             .request(app)
-            .get(`/api/article/getOneArticle/${id}`)
+            .get(`/api/blogs/${id}`)
             .end((err, res) => {
                 if (err) return done(err);
                 expect(res.status).to.equal(200);
@@ -65,14 +63,14 @@ describe("get single blog by id", () => {
 });
 
 //delete blog test
-
+ 
 it("it should delete a blog", (done) => {
     const id = "63ce55c3cff4e8d1db71ccb2";
     const token =
         "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkQGdtYWlsLmNvbSIsImlkIjoiNjNlNTAwZDlmMDRlZmNhZDc5YmVhOGExIiwiaWF0IjoxNjc1OTUzNTg3fQ.ToOlZRN705jMHHV_b0zGYzC2V6_sd4TEeuGIw6FnkT0";
     chai
         .request(app)
-        .delete(`/api/article/${id}`)
+        .delete(`/api/blogs/${id}`)
         .set("token", `${token}`)
         .end((error, res) => {
             console.log(res.body);
@@ -98,7 +96,7 @@ describe("Update Blog", () => {
 
         chai
             .request(app)
-            .put(`/api/updatePost/${blogId}`)
+            .put(`/api/blogs/${id}`)
             .set("token", token)
             .send(updatedData)
             .end((err, res) => {
