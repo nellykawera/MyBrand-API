@@ -122,7 +122,10 @@ const router = express.Router();
  *         description: Successfully deleted
  */
 
-router.route("/").get(getAllBlogs).post(protect, createBlog);
-router.route("/:id").get(getBlogById).put(protect, updateBlog).delete(protect, deleteBlog);
+router.route("/").get(getAllBlogs)
+router.route("/all").post(protect, createBlog);
+router.route("/one/:id").get(getBlogById);
+router.route("/update/:id").put(protect, updateBlog);
+router.route("/:id").delete(protect, deleteBlog);
 
 module.exports = router;

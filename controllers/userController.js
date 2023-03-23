@@ -7,7 +7,7 @@ const generateToken = require('../helpers/generateToken');
 
 exports.register = async (req, res) => {
     let newUser = new User(req.body);
-    newUser.hash_password = bcrypt.hashSync(req.body.password, 10);
+    newUser.hash_password = bcrypt.hash(req.body.password, 10);
 
     try {
         let createdUser = await newUser.save()

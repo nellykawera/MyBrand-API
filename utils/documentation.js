@@ -1,7 +1,5 @@
-import articleRouteDoc from "../routes/article.doc";
-import commentRouteDoc from "../routes/comment.doc";
-import messageRouteDoc from "../routes/message.doc";
-import userRouteDoc from "../routes/user.doc";
+const blogsRouteDoc = require ("../swagger/blogs");
+const userRouteDoc = require("../swagger/user.doc");
 
 const swaggerDocumentations = {
   openapi: "3.0.0",
@@ -24,7 +22,7 @@ const swaggerDocumentations = {
   schemes: ["HTTP", "HTTPS"],
   tags: [
     {
-      name: "Articles",
+      name: "Blogs",
       description: "",
     },
 
@@ -50,11 +48,10 @@ const swaggerDocumentations = {
   },
 
   paths: {
-    ...articleRouteDoc,
-    ...messageRouteDoc,
-    ...commentRouteDoc,
-    ...userRouteDoc,
+    ...blogsRouteDoc,
+    ...userRouteDoc
+
   },
 };
 
-export default swaggerDocumentations;
+module.exports= swaggerDocumentations;
