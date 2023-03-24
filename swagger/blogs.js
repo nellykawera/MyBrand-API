@@ -233,7 +233,7 @@ const blogsRouteDoc = {
     "/api/blogs/one/{id}": {
     get: getoneblog,
     },
-    "/api/blogs/update{id}": {
+    "/api/blogs/update/{id}": {
     put: updateBlog,
     },
     "/api/blogs/{id}": {

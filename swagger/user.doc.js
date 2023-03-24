@@ -10,7 +10,7 @@ const createUser = {
             fullName:{
               type: "string",
               description: "User email",
-              example: "admin@gmail.com",
+              example: "admin",
             },
             email: {
               type: "string",

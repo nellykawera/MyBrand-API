@@ -27,20 +27,46 @@ exports.getBlogById = async (req, res) => {
     }
 };
 
-exports.updateBlog = async (req, res) => {
+exports.updateBlog = async (req, res,next) => {
     try {
-        const blog = await blogService.updateBlog(req.params.id, req.body);
-        res.json({ data: blog, status: "success" });
+        const article = await blogService.findOne({ _id: req.params.id });
+        if (!article) {
+            res.json({message:"the article does not exit"});
+            
+        }
+        if (req.file.path) {
+            req.body.picture = await uploadFile(req, res, next);
+            await deleteFile(article.picture);
+        }
+        await blogService.updateOne(
+            { _id: article._id },
+            {
+                ...req.body,
+            }
+        );
+        res.status(StatusCodes.OK).json({
+            status: StatusCodes.OK,
+            message: "blog updated successfully",
+            payload: null,
+        });
     } catch (err) {
-        res.status(500).json({ error: err.message });
+        next(err);
     }
 };
 
-exports.deleteBlog = async (req, res) => {
+exports.deleteBlog = async (req, res, next) => {
     try {
-        const blog = await blogService.deleteBlog(req.params.id);
-        res.json({ data: blog, status: "success" });
+        const article = await blogService.findOne({ _id: req.params.id });
+        if (!article) {
+             res.json({message:"blog Not found"});
+        }
+        await blogService.deleteOne({ _id: article._id });
+        res.status(StatusCodes.OK).json({
+            status: StatusCodes.OK,
+            message: "blog deleted successfully",
+            payload: null,
+        });
     } catch (err) {
-        res.status(500).json({ error: err.message });
+        next(err);
     }
 };

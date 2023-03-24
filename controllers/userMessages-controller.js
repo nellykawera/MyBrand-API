@@ -1,4 +1,4 @@
-import Message from "./../models/userMessages-model";
+const Message = require ("./../models/userMessages-model");
 
 async function createMessage(req, res, next) {
   try {
@@ -46,7 +46,7 @@ async function deleteMessage(req, res, next) {
     res.status(200).json({
       status: 200,
       message: "message is deleted successfully",
-      data: messages,
+      data: message,
     });
   } catch (error) {
     console.log(error);
@@ -54,4 +54,4 @@ async function deleteMessage(req, res, next) {
   }
 }
 
-export { createMessage, getAllMessages, getMessages, deleteMessage };
+module.exports = { createMessage, getAllMessages, getMessages, deleteMessage };

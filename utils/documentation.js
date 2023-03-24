@@ -1,4 +1,5 @@
 const blogsRouteDoc = require ("../swagger/blogs");
+const messageRouteDoc = require("../swagger/message.doc");
 const userRouteDoc = require("../swagger/user.doc");
 
 const swaggerDocumentations = {
@@ -10,7 +11,8 @@ const swaggerDocumentations = {
   },
   servers: [
     {
-      url: "https://website-api-o6er.onrender.com",
+      url: "https://mybrand-ful7.onrender.com",
+      
       name: "production server",
     },
     {
@@ -49,7 +51,8 @@ const swaggerDocumentations = {
 
   paths: {
     ...blogsRouteDoc,
-    ...userRouteDoc
+    ...userRouteDoc,
+    ...messageRouteDoc
 
   },
 };

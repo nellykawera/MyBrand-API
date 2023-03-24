@@ -19,4 +19,4 @@ router.get("/", getAllMessages);
 // Get article by id
 router.get("/getOne/:id", getMessages);
 
-export default router;
+module.exports =router;
