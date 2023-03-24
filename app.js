@@ -4,6 +4,7 @@ const blogRouter = require("./routes/BlogRoutes");
 const userRouter = require("./routes/userRoutes");
 const swaggerDocumentations =  require("./utils/documentation")
 const dotenv = require('dotenv')
+const cors = require ("cors")
 
 // swagger dependencies import
 const swaggerJsDoc = require('swagger-jsdoc')
